@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app="todoApp">
+	<head>
+		<meta charset="UTF-8">
+		<title> to do list </title>
+		<link rel="stylesheet" type="text/css" href="todo-styles.css">
+	</head>
+	<body>
+		<div class="everything" ng-controller = "MainCtrl as todo">
+			<header>
+			TO DOs
+			</header>
+			<main>
+				<input type = "text" class="insertTask" id = "insertTask" placeholder="Add task..." ng-enter = "todo.addTask()" ng-model = "toDoText"  />
+				<div class="task" ng-repeat = 'task in todo.tasks'>
+					<input type="checkbox" class= "checkbox" ng-model="task.done" ng-change = "todo.check()"/><input type="text" class = "taskText done-{{task.done}}" value="{{task.name}}"/><input type="submit" class="eraseButton" value="X" ng-click = "todo.deleteBox(task.name)" />
+				
+				</div>
+				<div class="info">
+					{{getTodos() + " items left"}}
+				</div>
+			</main>
+			<footer>
+			Thannia Blanchet's exercise	at Nearsoft <br/>
+			Using Angular<br/>
+			July 2014
+			</footer>
+		</div>
+		<script src="angular.min.js"></script>
+		<script src="scripts/controller.js"></script>
+		<script src="scripts/directive_ngEnter.js"></script>
+		<script src="scripts/services.js"></script>
+	</body>
+</html>
